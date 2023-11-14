@@ -1,0 +1,13 @@
+{
+  "name": "dynamic-programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fib.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
