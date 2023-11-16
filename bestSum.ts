@@ -15,22 +15,27 @@ const bestSum = (
   if (targetSum === 0) return [];
   if (targetSum < 0) return null;
 
-  let currentSum: number[] | null = null;
+  let currentCombination: number[] | null = null;
 
   for (const num of numbers) {
     const remainder = targetSum - num;
-    const remainderResult = bestSum(remainder, numbers, memo);
+    const remainderCombination = bestSum(remainder, numbers, memo);
 
-    if (remainderResult !== null) {
-      memo[targetSum] = [...remainderResult, num];
+    if (remainderCombination !== null) {
+      const combination = [...remainderCombination, num];
 
-      if (currentSum === null || remainderResult.length < currentSum.length) {
-        currentSum = memo[targetSum];
+      if (
+        currentCombination === null ||
+        combination.length < currentCombination.length
+      ) {
+        currentCombination = combination;
       }
     }
   }
 
-  return currentSum;
+  memo[targetSum] = currentCombination;
+
+  return memo[targetSum];
 };
 
 console.log(bestSum(7, [5, 3, 4, 7])); // [7]
